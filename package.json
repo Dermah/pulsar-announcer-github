@@ -1,0 +1,19 @@
+{
+  "name": "pulsar-announcer-github",
+  "version": "0.0.1",
+  "description": "Visualise events happening on GitHub",
+  "main": "pulsar-accouncer-github.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://Dermah@github.com/Dermah/pulsar-announcer-github.git"
+  },
+  "author": "Dermah",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dermah/pulsar-announcer-github/issues"
+  },
+  "homepage": "https://github.com/Dermah/pulsar-announcer-github"
+}
