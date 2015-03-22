@@ -18,19 +18,27 @@ var github = new GitHub({
 github.events.get({}, function(err, res) {
   console.log("Response from GitHub had " + res.length + " events");
 
-  var events = [];
+  // var events = [];
 
-  for (var i = 0; i < res.length; i++) {
-    if (res[i].type === "PushEvent") {
-      console.log("Found");
-      events.push({
-        user: res[i].actor.login,
-        avatar: res[i].actor.avatar_url
-      });
-    }
-  };
+  var pulse = {
+    Name: "GitHubAvatar",
+    User: res[0].actor.login,
+    AvatarUrl: res[0].actor.avatar_url
+  }
 
-  console.log(events);
+  // for (var i = 0; i < res.length; i++) {
+  //   if (res[i].type === "PushEvent") {
+  //     console.log("Found");
+  //     events.push({
+  //       user: res[i].actor.login,
+  //       avatar: res[i].actor.avatar_url
+  //     });
+  //   }
+  // };
 
-  console.log("There were " + events.length + " events");
+  t.transmit(pulse);  
+  console.log("Transmitted: " + pulse);
+  // console.log(events);
+
+  // console.log("There were " + events.length + " events");
 });
