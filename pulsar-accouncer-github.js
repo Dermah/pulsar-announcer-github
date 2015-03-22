@@ -33,13 +33,14 @@ github.events.get({}, function(err, res) {
     if (res[i].type === "PushEvent") {
       pulse.Users.push({
         User: res[i].actor.login,
-        AvatarUrl: res[i].actor.avatar_url
-        Delay: Math.floor((Math.random() * 13) + 1);
+        AvatarUrl: res[i].actor.avatar_url,
       });
     }
   };
 
-  t.transmit(pulse);  
+  t.transmit(pulse);
+
+  
   console.log("Transmitted: ");
   console.log(pulse);
 
