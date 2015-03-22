@@ -2,7 +2,6 @@ var Transmitter = require("pulsar-transmitter");
 var GitHub = require("github");
 
 var t = new Transmitter();
-t.transmit({"PulseName": "lol"});
 
 var github = new GitHub({
   // required
@@ -18,27 +17,31 @@ var github = new GitHub({
 github.events.get({}, function(err, res) {
   console.log("Response from GitHub had " + res.length + " events");
 
-  // var events = [];
-
   var pulse = {
     Name: "GitHubAvatar",
-    User: res[0].actor.login,
-    AvatarUrl: res[0].actor.avatar_url
-  }
+    Users: []
+  };
 
-  // for (var i = 0; i < res.length; i++) {
-  //   if (res[i].type === "PushEvent") {
-  //     console.log("Found");
-  //     events.push({
-  //       user: res[i].actor.login,
-  //       avatar: res[i].actor.avatar_url
-  //     });
-  //   }
-  // };
+
+  // var pulse = {
+  //   Name: "GitHubAvatar",
+  //   User: res[0].actor.login,
+  //   AvatarUrl: res[0].actor.avatar_url
+  // }
+
+  for (var i = 0; i < res.length; i++) {
+    if (res[i].type === "PushEvent") {
+      pulse.Users.push({
+        User: res[i].actor.login,
+        AvatarUrl: res[i].actor.avatar_url
+        Delay: Math.floor((Math.random() * 13) + 1);
+      });
+    }
+  };
 
   t.transmit(pulse);  
-  console.log("Transmitted: " + pulse);
-  // console.log(events);
+  console.log("Transmitted: ");
+  console.log(pulse);
 
-  // console.log("There were " + events.length + " events");
+  console.log("There were " + pulse.Users.length + " push events");
 });
