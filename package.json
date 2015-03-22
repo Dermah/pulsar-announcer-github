@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Dermah/pulsar-announcer-github/issues"
   },
-  "homepage": "https://github.com/Dermah/pulsar-announcer-github"
+  "homepage": "https://github.com/Dermah/pulsar-announcer-github",
+  "dependencies": {
+    "github": "^0.2.3",
+    "pulsar-transmitter" : "Dermah/pulsar-transmitter"
+  }
 }
